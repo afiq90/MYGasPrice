@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('afiq', function () {
+    return view('afiq');
+});
