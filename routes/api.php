@@ -13,11 +13,25 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
+// Route::post('register', 'AuthController@register');
+// Route::post('login', 'AuthController@login');
 Route::apiResource('books', 'BookController');
 Route::post('books/{book}/ratings', 'RatingController@store');
+
+//Register & login user API
+Route::post('register', 'PassportController@register');
+Route::post('login', 'PassportController@login');
+
+
+// Gas API
+// Route::get('gas', 'GasController@index');
+//Need to put GasControllerAPI into auth middleware for authentication
+Route::middleware('auth:api')->group(function() {
+    Route::get('user', 'PassportController@details');
+    Route::resource('gas', 'GasControllerAPI');
+});
+// Route::resource('gas', 'GasControllerAPI');

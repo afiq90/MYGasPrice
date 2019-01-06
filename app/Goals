@@ -1,0 +1,17 @@
+Goals : 
+
+1) Add and authentication to API using laravel passport
+Steps:
+ - composer require laravel/passport ✅
+ - add Laravel\Passport\PassportServiceProvider::class in app.php if laravel 5.4 or below
+ - php artisan migrate ✅
+ - php artisan passport:install ✅
+ - add use Laravel\Passport\HasApiTokens & hasApiTokens to User model ✅
+ - add use Laravel\Passport\Passport; & Passport::routes(); to AuthServiceProvider ✅
+ - In the config/auth.php file, set api driver to the passport ✅
+ - Route::middleware('auth:api')->group(function() { any controller that needs to be protected }
+ - create passport controller -> refers PassportController in PassportAuth project.
+ - set a relationship between user and gas
+ 
+2) Add and authentication to Web Based using laravel passport
+3) Implement search API 

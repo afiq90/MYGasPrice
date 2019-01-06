@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::get('afiq', function () {
     return view('afiq');
 });
+
+// Route::get('gas', function (){
+//     return view('Gas.index');
+// });
+
+Route::resource('gas', 'GasController');
