@@ -74,6 +74,7 @@ class GasControllerAPI extends Controller
         $gas->brand_name = $request->brand_name;
         $gas->note = $request->note;
 
+
         // save gas by user id
         if (auth()->user()->gas()->save($gas)) {
             return response()->json([
@@ -111,6 +112,31 @@ class GasControllerAPI extends Controller
                 'message' => 'Gas with an id '. $id. ' could not be found',
             ], 400);
         }
+    }
+
+    public function search($searchTerm) {
+        // $search = $request->searchTerm;
+        // $search = $request->has('searchTerm');
+        // print($s);
+       
+
+        // $searchTerm = $request->input('searchTerm');
+        $gas = Gas::where('brand_name', $searchTerm)->get();
+        // $gas = Gas::where('id', 'like', '%$s%')->get();
+        // print($gas);
+
+         if ($gas) {
+            return response()->json([
+                'success' => true,
+                // 'Search Data' => new GasResource($gas),
+                'Search Data' => $gas,
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gas could not be found',
+            ], 400);
+        } 
     }
 
 

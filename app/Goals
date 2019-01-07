@@ -9,9 +9,11 @@ Steps:
  - add use Laravel\Passport\HasApiTokens & hasApiTokens to User model ✅
  - add use Laravel\Passport\Passport; & Passport::routes(); to AuthServiceProvider ✅
  - In the config/auth.php file, set api driver to the passport ✅
- - Route::middleware('auth:api')->group(function() { any controller that needs to be protected }
- - create passport controller -> refers PassportController in PassportAuth project.
- - set a relationship between user and gas
- 
+ - Route::middleware('auth:api')->group(function() { any controller that needs to be protected } ✅
+ - set a relationship between user and gas ✅
+  - create passport controller -> refers PassportController in PassportAuth project  - create passport controller -> refers PassportController in PassportAuth project.
+
 2) Add and authentication to Web Based using laravel passport
 3) Implement search API 
+
+** If drop the database, need to run php artisan passport:install again

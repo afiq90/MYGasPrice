@@ -26,12 +26,15 @@ Route::post('books/{book}/ratings', 'RatingController@store');
 Route::post('register', 'PassportController@register');
 Route::post('login', 'PassportController@login');
 
+Route::get('search/{s}', 'GasControllerAPI@search');
+// Route::get('search/', 'GasControllerAPI@search');
 
 // Gas API
 // Route::get('gas', 'GasController@index');
 //Need to put GasControllerAPI into auth middleware for authentication
 Route::middleware('auth:api')->group(function() {
     Route::get('user', 'PassportController@details');
+    // Route::get('search', 'GasControllerAPI@search');
     Route::resource('gas', 'GasControllerAPI');
 });
 // Route::resource('gas', 'GasControllerAPI');
